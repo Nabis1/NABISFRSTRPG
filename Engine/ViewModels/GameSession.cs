@@ -25,6 +25,8 @@ namespace Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToEast));
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToSouth));
+
+                GivePlayerQuestAtLocation();
             }
         }
 
@@ -69,7 +71,7 @@ namespace Engine.ViewModels
 
             CurrentWorld = WorldFactory.CreateWorld();
 
-            CurrentLocation = CurrentWorld.LocationAt(0,-1);
+            CurrentLocation = CurrentWorld.LocationAt(0,0);
 
         }
         public void MoveNorth()
@@ -100,7 +102,18 @@ namespace Engine.ViewModels
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate);
             }
         }
-        
-        
+        // any quest that are at locatiopn that player doesnt already have in quests, gives Q to a player
+        private void GivePlayerQuestAtLocation()
+        {
+            foreach(Quest quest in CurrentLocation.QuestsAvailableHere)
+            {
+                if (!CurrentPlayer.Quests.Any(q => q.PlayerQuest.ID == quest.ID)) ;
+                {
+                    CurrentPlayer.Quests.Add(new QuestStatus(quest));
+                }
+            }
+        }
+
+
     }
 }
