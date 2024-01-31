@@ -11,6 +11,7 @@ namespace Engine.ViewModels
     public class GameSession : BaseNotificationClass
     {
         private Location _currentLocation;
+        private Monster _currentMonster;
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
         public Location CurrentLocation
@@ -19,17 +20,25 @@ namespace Engine.ViewModels
             set
             {
                 _currentLocation = value;
-
                 OnPropertyChanged(nameof(CurrentLocation));
                 OnPropertyChanged(nameof(HasLocationToNorth));
                 OnPropertyChanged(nameof(HasLocationToEast));
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToSouth));
-
-                GivePlayerQuestAtLocation();
+                GivePlayerQuestsAtLocation();
+                GetMonsterAtLocation();
             }
         }
-
+        public Monster CurrentMonster
+        {
+            get { return _currentMonster; }
+            set
+            {
+                _currentMonster = value;
+                OnPropertyChanged(nameof(CurrentMonster));
+                OnPropertyChanged(nameof(HasMonster));
+            }
+        }
         public bool HasLocationToNorth
         {
             get
@@ -58,60 +67,62 @@ namespace Engine.ViewModels
                 return CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate) != null;
             }
         }
+        public bool HasMonster => CurrentMonster != null;
         public GameSession()
         {
-            CurrentPlayer = new Player { Name = "Jaydris",
-                                         CharacterClass = "Warrior",
-                                         HitPoints = 100,
-                                         Gold = 10,
-                                         ExperiencePoints = 0,
-                                         Level = 1,
-                                        };
-
-
+            CurrentPlayer = new Player
+                            {
+                                Name = "Scott",
+                                CharacterClass = "Fighter",
+                                HitPoints = 10,
+                                Gold = 1000000,
+                                ExperiencePoints = 0,
+                                Level = 1
+                            };
             CurrentWorld = WorldFactory.CreateWorld();
-
-            CurrentLocation = CurrentWorld.LocationAt(0,0);
-
+            CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
         public void MoveNorth()
         {
-            if (HasLocationToNorth)
+            if(HasLocationToNorth)
             {
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1);
             }
         }
         public void MoveEast()
         {
-            if (HasLocationToEast)
+            if(HasLocationToEast)
             {
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate);
             }
         }
         public void MoveSouth()
         {
-            if (HasLocationToSouth)
+            if(HasLocationToSouth)
             {
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1);
             }
         }
         public void MoveWest()
         {
-            if (HasLocationToWest)
+            if(HasLocationToWest)
             {
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate);
             }
         }
-        // any quest that are at locatiopn that player doesnt already have in quests, gives Q to a player
-        private void GivePlayerQuestAtLocation()
+        private void GivePlayerQuestsAtLocation()
         {
             foreach(Quest quest in CurrentLocation.QuestsAvailableHere)
             {
-                if (!CurrentPlayer.Quests.Any(q => q.PlayerQuest.ID == quest.ID)) ;
+                if(!CurrentPlayer.Quests.Any(q => q.PlayerQuest.ID == quest.ID))
                 {
                     CurrentPlayer.Quests.Add(new QuestStatus(quest));
                 }
             }
+        }
+        private void GetMonsterAtLocation()
+        {
+            CurrentMonster = CurrentLocation.GetMonster();
         }
 
 
