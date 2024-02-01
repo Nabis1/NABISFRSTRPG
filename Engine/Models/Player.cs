@@ -10,13 +10,13 @@ namespace Engine.Models
 {
     public class Player : BaseNotificationClass
     {
-        public string _name;
-        public string _characterClass;
-        public int _hitPoints;
-        public int _experiencePoints;
-        public int _level;
-        public int _gold;
-
+        #region Properties
+        private string _name;
+        private string _characterClass;
+        private int _hitPoints;
+        private int _experiencePoints;
+        private int _level;
+        private int _gold;
         public string Name
         {
             get { return _name; }
@@ -71,15 +71,21 @@ namespace Engine.Models
                 OnPropertyChanged(nameof(Gold));
             }
         }
-
         public ObservableCollection<GameItem> Inventory { get; set; }
+        public List<GameItem> Weapons =>
+            Inventory.Where(i => i is Weapon).ToList();
         public ObservableCollection<QuestStatus> Quests { get; set; }
-        
-
-        public Player ()
+        #endregion
+        public Player()
         {
             Inventory = new ObservableCollection<GameItem>();
             Quests = new ObservableCollection<QuestStatus>();
         }
+        public void AddItemToInventory(GameItem item)
+        {
+            Inventory.Add(item);
+            OnPropertyChanged(nameof(Weapons));
+        }
+
     }
 }
