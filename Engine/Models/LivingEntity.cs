@@ -13,6 +13,7 @@ namespace Engine.Models
         private int _currentHitPoints;
         private int _maximumPoints;
         private int _gold;
+        private int _level;
         public string Name
         { 
             get { return _name; }
@@ -26,12 +27,17 @@ namespace Engine.Models
         public int MaximumPoints
         { 
             get { return _maximumPoints; }
-            private set { _maximumPoints = value; OnPropertyChanged(nameof(MaximumPoints)); }
+            protected set { _maximumPoints = value; OnPropertyChanged(nameof(MaximumPoints)); }
         }
         public int Gold
         {
             get { return _gold; }
             private set { _gold = value; OnPropertyChanged(nameof(Gold));}
+        }
+        public int Level
+        {
+            get { return _level; }
+            protected set { _level = value; OnPropertyChanged(nameof(Level)); } 
         }
         public ObservableCollection<GameItem> Inventory { get; set; }
         public ObservableCollection<GroupedInventoryItem> GroupedInventory {  get; set; }
@@ -40,13 +46,13 @@ namespace Engine.Models
         public bool IsDead => CurrentHitPoints <= 0;
 
         public event EventHandler OnKilled;
-        protected LivingEntity(string name, int maximumHitpoints, int currentHitPoints, int gold)
+        protected LivingEntity(string name, int maximumHitpoints, int currentHitPoints, int gold,int level = 1)
         {
             Name = name;
             CurrentHitPoints = currentHitPoints;
             MaximumPoints = maximumHitpoints;
             Gold = gold;
-
+            Level = level;
             Inventory = new ObservableCollection<GameItem>();
             GroupedInventory = new ObservableCollection<GroupedInventoryItem>();
         }
@@ -103,8 +109,10 @@ namespace Engine.Models
         public void RemoveItemFromInventory(GameItem item)
         {
             Inventory.Remove(item);
-            GroupedInventoryItem groupedInventoryItemToRemove = GroupedInventory.FirstOrDefault(gi => gi.Item == item);
-           
+            GroupedInventoryItem groupedInventoryItemToRemove = item.IsUnique ?
+            GroupedInventory.FirstOrDefault(gi => gi.Item == item) :
+            GroupedInventory.FirstOrDefault(gi => gi.Item.ItemTypeID == item.ItemTypeID);
+
             if (groupedInventoryItemToRemove != null)
             {
                 if (groupedInventoryItemToRemove.Quantity == 1)
