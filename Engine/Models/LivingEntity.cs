@@ -17,30 +17,30 @@ namespace Engine.Models
         public string Name
         { 
             get { return _name; }
-            private set { _name = value; OnPropertyChanged(nameof(Name)); }
+            private set { _name = value; OnPropertyChanged(); }
         }
         public int CurrentHitPoints
         {
             get { return _currentHitPoints; }
-            private set { _currentHitPoints = value; OnPropertyChanged(nameof(CurrentHitPoints)); }
+            private set { _currentHitPoints = value; OnPropertyChanged(); }
         }
         public int MaximumPoints
         { 
             get { return _maximumPoints; }
-            protected set { _maximumPoints = value; OnPropertyChanged(nameof(MaximumPoints)); }
+            protected set { _maximumPoints = value; OnPropertyChanged(); }
         }
         public int Gold
         {
             get { return _gold; }
-            private set { _gold = value; OnPropertyChanged(nameof(Gold));}
+            private set { _gold = value; OnPropertyChanged();}
         }
         public int Level
         {
             get { return _level; }
-            protected set { _level = value; OnPropertyChanged(nameof(Level)); } 
+            protected set { _level = value; OnPropertyChanged(); } 
         }
-        public ObservableCollection<GameItem> Inventory { get; set; }
-        public ObservableCollection<GroupedInventoryItem> GroupedInventory {  get; set; }
+        public ObservableCollection<GameItem> Inventory { get; }
+        public ObservableCollection<GroupedInventoryItem> GroupedInventory {  get; }
         public List<GameItem> Weapons =>
             Inventory.Where(i => i is Weapon).ToList();
         public bool IsDead => CurrentHitPoints <= 0;

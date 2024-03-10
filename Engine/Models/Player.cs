@@ -19,7 +19,7 @@ namespace Engine.Models
             set
             {
                 _characterClass = value;
-                OnPropertyChanged(nameof(CharacterClass));
+                OnPropertyChanged();
             }
         }
         public int ExperiencePoints
@@ -28,11 +28,11 @@ namespace Engine.Models
             private set
             {
                 _experiencePoints = value;
-                OnPropertyChanged(nameof(ExperiencePoints));
+                OnPropertyChanged();
                 SetLevelAndMaximumHitPoints();
             }
         }
-        public ObservableCollection<QuestStatus> Quests { get; set; }
+        public ObservableCollection<QuestStatus> Quests { get; }
         #endregion
         public event EventHandler OnLeveledUp;
         public Player(string name,string characterClass,int experiencePoints,int maximumHitPoints,int currentHitPoints,int gold) : base(name,maximumHitPoints,currentHitPoints,gold)
