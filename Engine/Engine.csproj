@@ -14,6 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="NUnit" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\Locations\Home.png" />
     <Resource Include="Images\Monsters\GiantSpider.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
