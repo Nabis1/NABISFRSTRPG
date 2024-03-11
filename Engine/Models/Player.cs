@@ -63,7 +63,7 @@ namespace Engine.Models
             
             if (Level != originalLevel) 
             {
-                MaximumPoints = Level * 10;
+                MaximumHitPoints = Level * 10;
                 OnLeveledUp?.Invoke(this, System.EventArgs.Empty);
             }
         }
