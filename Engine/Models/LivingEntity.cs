@@ -84,7 +84,7 @@ namespace Engine.Models
             get => _currentConsumable;
             set
             {
-                if(_currentConsumable != null)
+                if (_currentConsumable != null)
                 {
                     _currentConsumable.Action.OnActionPerformed -= RaiseActionPerformedEvent;
                 }
@@ -102,7 +102,6 @@ namespace Engine.Models
             Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
         public List<GameItem> Consumables =>
             Inventory.Where(i => i.Category == GameItem.ItemCategory.Consumable).ToList();
-
         public bool HasConsumable => Consumables.Any();
         public bool IsDead => CurrentHitPoints <= 0;
         #endregion

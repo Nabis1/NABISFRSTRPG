@@ -49,7 +49,7 @@ namespace WPFUI
         {
             _gameSession.AttackCurrentMonster();
         }
-        private void OnCLick_UseCurrentConsumable(object sender, RoutedEventArgs e)
+        private void OnClick_UseCurrentConsumable(object sender, RoutedEventArgs e)
         {
             _gameSession.UseCurrentConsumable();
         }
