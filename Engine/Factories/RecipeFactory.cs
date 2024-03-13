@@ -14,8 +14,8 @@ namespace Engine.Factories
         {
             Recipe granolaBar = new Recipe(1, "Granola Bar");
             granolaBar.AddIngredient(3001, 1);
-            granolaBar.AddIngredient(3002, 2);
-            granolaBar.AddIngredient(3003, 2);
+            granolaBar.AddIngredient(3002, 1);
+            granolaBar.AddIngredient(3003, 1);
             granolaBar.AddOutputItem(2001, 1);
             _recipes.Add(granolaBar);
         }
