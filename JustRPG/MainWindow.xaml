@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUI"
         mc:Ignorable="d"
-        Title="Discoveria" Height="768" Width="1024">
+        Title="Discoveria" Height="768" Width="1024"
+        KeyDown="MainWindow_OnKeyDown">
+
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
     </Window.Resources>

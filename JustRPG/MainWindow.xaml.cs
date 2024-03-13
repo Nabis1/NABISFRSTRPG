@@ -22,9 +22,11 @@ namespace WPFUI
     public partial class MainWindow : Window
     {
         private readonly GameSession _gameSession = new GameSession();
+        private readonly Dictionary<Key, Action> _userImputActions = new Dictionary<Key, Action>();
         public MainWindow()
         {
             InitializeComponent();
+            InitializeUserInputActions();
             _gameSession = new GameSession();
             _gameSession.OnMessageRaised += OnGameMessageRaised;
             DataContext = _gameSession;
@@ -71,6 +73,23 @@ namespace WPFUI
             Recipe recipe = ((FrameworkElement)sender).DataContext as Recipe;
             _gameSession.CraftItemUsing(recipe);
         }
+        private void InitializeUserInputActions()
+        {
+            _userImputActions.Add(Key.W, () => _gameSession.MoveNorth());
+            _userImputActions.Add(Key.A, () => _gameSession.MoveWest());
+            _userImputActions.Add(Key.D, () => _gameSession.MoveEast());
+            _userImputActions.Add(Key.S, () => _gameSession.MoveSouth());
+            _userImputActions.Add(Key.Z, () => _gameSession.AttackCurrentMonster());
+            _userImputActions.Add(Key.C, () => _gameSession.UseCurrentConsumable());
+        }
+        private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if(_userImputActions.ContainsKey(e.Key))
+            {
+                _userImputActions[e.Key].Invoke();
+            }
+        }
     }
+    
 
 }
