@@ -63,10 +63,13 @@ namespace WPFUI
         }
         private void OnClick_DisplayTradeScreen(object sender, RoutedEventArgs e)
         {
-            TradeScreen tradeScreen = new TradeScreen();
-            tradeScreen.Owner = this;
-            tradeScreen.DataContext = _gameSession;
-            tradeScreen.ShowDialog();
+            if (_gameSession.CurrentTrader != null)
+            {
+                TradeScreen tradeScreen = new TradeScreen();
+                tradeScreen.Owner = this;
+                tradeScreen.DataContext = _gameSession;
+                tradeScreen.ShowDialog();
+            }
         }
         private void OnClick_Craft(object sender, RoutedEventArgs e)
         {
@@ -81,12 +84,30 @@ namespace WPFUI
             _userImputActions.Add(Key.S, () => _gameSession.MoveSouth());
             _userImputActions.Add(Key.Z, () => _gameSession.AttackCurrentMonster());
             _userImputActions.Add(Key.C, () => _gameSession.UseCurrentConsumable());
+            _userImputActions.Add(Key.I, () => SetTabFocusTo("InventoryTabItem"));
+            _userImputActions.Add(Key.Q, () => SetTabFocusTo("QuestTabItem"));
+            _userImputActions.Add(Key.R, () => SetTabFocusTo("RecipesTabItem"));
+            _userImputActions.Add(Key.T, () => OnClick_DisplayTradeScreen(this, new RoutedEventArgs()));
         }
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {
             if(_userImputActions.ContainsKey(e.Key))
             {
                 _userImputActions[e.Key].Invoke();
+            }
+        }
+        private void SetTabFocusTo(string tabName)
+        {
+            foreach (object item in PlayerDataTabControl.Items)
+            {
+                if (item is TabItem tabItem)
+                {
+                    if (tabItem.Name == tabName)
+                    {
+                        tabItem.IsSelected = true;
+                        return;
+                    }
+                }
             }
         }
     }
