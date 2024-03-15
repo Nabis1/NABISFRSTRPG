@@ -31,4 +31,10 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="GameData\GameItems.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
