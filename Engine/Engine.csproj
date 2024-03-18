@@ -24,6 +24,12 @@
     <None Update="GameData\Quests.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="GameData\Recipes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="GameData\Traders.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Images\Locations\FarmFields.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
