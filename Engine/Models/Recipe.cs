@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Engine.Models
@@ -15,11 +16,15 @@ namespace Engine.Models
         public string ToolTipContents =>
             "Ingredients" + Environment.NewLine +
             "===========" + Environment.NewLine +
-            string.Join(Environment.NewLine, Ingredients.Select(i => i.QuantityItemDescription)) +
+            string.Join(Environment.NewLine, Ingredients.Select(i => InsertSpaceAfterNumber(i.QuantityItemDescription))) +
             Environment.NewLine + Environment.NewLine +
             "Creates" + Environment.NewLine +
             "===========" + Environment.NewLine +
-            string.Join(Environment.NewLine, OutputItems.Select(i => i.QuantityItemDescription));
+            string.Join(Environment.NewLine, OutputItems.Select(i => InsertSpaceAfterNumber(i.QuantityItemDescription)));
+        private string InsertSpaceAfterNumber(string spaceAfterNumber)
+        {
+            return Regex.Replace(spaceAfterNumber, @"(\d)([A-Za-z])", "$1 $2");
+        }
         public Recipe(int id,string name) 
         {
             ID = id;
