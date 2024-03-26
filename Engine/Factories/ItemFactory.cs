@@ -51,22 +51,22 @@ namespace Engine.Factories
                 GameItem.ItemCategory itemCategory = DetermineItemCategory(node.Name);
                 GameItem gameItem =
                     new GameItem(itemCategory,
-                                 node.AttributeToInt("ID"),
+                                 node.AttributeAsInt("ID"),
                                  node.AttributeAsString( "Name"),
-                                 node.AttributeToInt("Price"),
+                                 node.AttributeAsInt("Price"),
                                  itemCategory == GameItem.ItemCategory.Weapon);
                 if (itemCategory == GameItem.ItemCategory.Weapon)
                 {
                     gameItem.Action =
                         new AttackWithWeapon(gameItem,
-                                             node.AttributeToInt("MinimumDamage"),
-                                             node.AttributeToInt("MaximumDamage"));
+                                             node.AttributeAsInt("MinimumDamage"),
+                                             node.AttributeAsInt("MaximumDamage"));
                 }
                 else if (itemCategory == GameItem.ItemCategory.Consumable)
                 {
                     gameItem.Action =
                         new Heal(gameItem,
-                                 node.AttributeToInt("HitPointsToHeal"));
+                                 node.AttributeAsInt("HitPointsToHeal"));
                 }
                 _standardGameItems.Add(gameItem);
             }

@@ -1,10 +1,10 @@
 ﻿using System;
 using Engine.Models;
+using Engine.Services;
 namespace Engine.Actions
 {
     public class AttackWithWeapon : BaseAction, IAction
     {
-        private readonly GameItem _weapon;
         private readonly int _maximumDamage;
         private readonly int _minimumDamage;
         public AttackWithWeapon(GameItem itemInUse, int minimumDamage, int maximumDamage) : base(itemInUse)
@@ -30,14 +30,15 @@ namespace Engine.Actions
 
             string actorName = (actor is Player) ? "You" : $" {actor.Name}";
             string targetName = (target is Player) ? "You" : $" {target.Name}";
-            if (damage == 0)
+            if (CombatService.AttackSucceeded(actor,target))
             {
-                ReportResult($"{actor.Name} missed {targetName}.");
+                int damagee = RandomNumberGenerator.NumberBetween(_minimumDamage, _maximumDamage);
+                ReportResult($"{actorName} hit {targetName} for {damagee} point{(damagee > 1 ? "s" : "")}.");
+                target.TakeDamage(damage);
             }
             else
             {
-                ReportResult($"{actorName} hit {targetName} for {damage} point{(damage > 1? "s" :"")}.");
-                target.TakeDamage(damage);
+                ReportResult($"{actorName} missed {targetName}.");
             }
         }
     }

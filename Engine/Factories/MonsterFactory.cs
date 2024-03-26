@@ -35,20 +35,21 @@ namespace Engine.Factories
             foreach (XmlNode node in nodes)
             {
                 Monster monster =
-                    new Monster(node.AttributeToInt("ID"),
+                    new Monster(node.AttributeAsInt("ID"),
                                 node.AttributeAsString("Name"),
                                 $".{rootImagePath}{node.AttributeAsString("ImageName")}",
-                                node.AttributeToInt("MaximumHitPoints"),
-                                ItemFactory.CreateGameItem(node.AttributeToInt("WeaponID")),
-                                node.AttributeToInt("RewardXP"),
-                                node.AttributeToInt("Gold"));
+                                node.AttributeAsInt("MaximumHitPoints"),
+                                Convert.ToInt32(node.SelectSingleNode("./Dexterity").InnerText),
+                                ItemFactory.CreateGameItem(node.AttributeAsInt("WeaponID")),
+                                node.AttributeAsInt("RewardXP"),
+                                node.AttributeAsInt("Gold"));
                 XmlNodeList lootItemNodes = node.SelectNodes("./LootItems/LootItem");
                 if (lootItemNodes != null)
                 {
                     foreach (XmlNode lootItemNode in lootItemNodes)
                     {
-                        monster.AddItemToLootTable(lootItemNode.AttributeToInt("ID"),
-                                                   lootItemNode.AttributeToInt("Percentage"));
+                        monster.AddItemToLootTable(lootItemNode.AttributeAsInt("ID"),
+                                                   lootItemNode.AttributeAsInt("Percentage"));
                     }
                 }
                 _baseMonsters.Add(monster);

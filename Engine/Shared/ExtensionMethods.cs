@@ -9,7 +9,7 @@ namespace Engine.Shared
 {
     public static class ExtensionMethods
     {
-        public static int AttributeToInt(this XmlNode node, string attributeName)
+        public static int AttributeAsInt(this XmlNode node, string attributeName)
         {
             return Convert.ToInt32(node.AttributeAsString(attributeName));
         }

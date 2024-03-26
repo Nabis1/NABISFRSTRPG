@@ -12,6 +12,7 @@ namespace Engine.Models
     {
         #region Properties
         private string _name;
+        private int _dexterity;
         private int _currentHitPoints;
         private int _maximumHitPoints;
         private int _gold;
@@ -21,16 +22,25 @@ namespace Engine.Models
         private Inventory _inventory;
         public string Name
         {
-            get { return _name; }
+            get => _name; 
             private set
             {
                 _name = value;
                 OnPropertyChanged();
             }
         }
+        public int Dexterity
+        {
+            get => _dexterity;
+            private set
+            {
+                _dexterity = value;
+                OnPropertyChanged();
+            }
+        }
         public int CurrentHitPoints
         {
-            get { return _currentHitPoints; }
+            get => _currentHitPoints;
             private set
             {
                 _currentHitPoints = value;
@@ -39,7 +49,7 @@ namespace Engine.Models
         }
         public int MaximumHitPoints
         {
-            get { return _maximumHitPoints; }
+            get => _maximumHitPoints;
             protected set
             {
                 _maximumHitPoints = value;
@@ -48,7 +58,7 @@ namespace Engine.Models
         }
         public int Gold
         {
-            get { return _gold; }
+            get => _gold;
             private set
             {
                 _gold = value;
@@ -57,7 +67,7 @@ namespace Engine.Models
         }
         public int Level
         {
-            get { return _level; }
+            get => _level;
             protected set
             {
                 _level = value;
@@ -75,7 +85,7 @@ namespace Engine.Models
         }
         public GameItem CurrentWeapon
         {
-            get { return _currentWeapon; }
+            get => _currentWeapon;
             set
             {
                 if (_currentWeapon != null)
@@ -113,10 +123,11 @@ namespace Engine.Models
         #endregion
         public event EventHandler<string> OnActionPerformed;
         public event EventHandler OnKilled;
-        protected LivingEntity(string name, int maximumHitPoints, int currentHitPoints,
+        protected LivingEntity(string name, int maximumHitPoints, int currentHitPoints,int dexterity,
                                int gold, int level = 1)
         {
             Name = name;
+            Dexterity = dexterity;
             MaximumHitPoints = maximumHitPoints;
             CurrentHitPoints = currentHitPoints;
             Gold = gold;

@@ -43,8 +43,8 @@ namespace Engine.Factories
             foreach (XmlNode node in nodes)
             {
                 Location location =
-                    new Location(node.AttributeToInt("X"),
-                                 node.AttributeToInt("Y"),
+                    new Location(node.AttributeAsInt("X"),
+                                 node.AttributeAsInt("Y"),
                                  node.AttributeAsString("Name"),
                                  node.SelectSingleNode("./Description")?.InnerText ?? "",
                                  $".{rootImagePath}{node.AttributeAsString("ImageName")}");
@@ -62,8 +62,8 @@ namespace Engine.Factories
             }
             foreach (XmlNode monsterNode in monsters)
             {
-                location.AddMonster(monsterNode.AttributeToInt("ID"),
-                                    monsterNode.AttributeToInt("Percent"));
+                location.AddMonster(monsterNode.AttributeAsInt("ID"),
+                                    monsterNode.AttributeAsInt("Percent"));
             }
         }
         private static void AddQuests(Location location, XmlNodeList quests)
@@ -75,7 +75,7 @@ namespace Engine.Factories
             foreach (XmlNode questNode in quests)
             {
                 location.QuestsAvailableHere
-                        .Add(QuestFactory.GetQuestByID(questNode.AttributeToInt("ID")));
+                        .Add(QuestFactory.GetQuestByID(questNode.AttributeAsInt("ID")));
             }
         }
         private static void AddTrader(Location location, XmlNode traderHere)
@@ -85,7 +85,7 @@ namespace Engine.Factories
                 return;
             }
             location.TraderHere =
-                TraderFactory.GetTraderByID(traderHere.AttributeToInt("ID"));
+                TraderFactory.GetTraderByID(traderHere.AttributeAsInt("ID"));
         }
     }
 }

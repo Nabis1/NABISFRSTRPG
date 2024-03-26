@@ -92,7 +92,8 @@ namespace Engine.ViewModels
         #endregion
         public GameSession()
         {
-            CurrentPlayer = new Player("Jaydris", "Fighter", 0, 10, 10, 10);
+            int dexterity = RandomNumberGenerator.NumberBetween(3, 18);
+            CurrentPlayer = new Player("Jaydris", "Fighter", 0, 10, 10, dexterity, 10);
             if (!CurrentPlayer.Inventory.Weapons.Any())
             {
                 CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));

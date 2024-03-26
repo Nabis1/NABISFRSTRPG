@@ -32,18 +32,18 @@ namespace Engine.Factories
                 List<ItemQuantity> rewardItems = new List<ItemQuantity>();
                 foreach (XmlNode childNode in node.SelectNodes("./ItemsToComplete/Item"))
                 {
-                    itemsToComplete.Add(new ItemQuantity(childNode.AttributeToInt("ID"), childNode.AttributeToInt("Quantity")));
+                    itemsToComplete.Add(new ItemQuantity(childNode.AttributeAsInt("ID"), childNode.AttributeAsInt("Quantity")));
                 }
                 foreach (XmlNode childNode in node.SelectNodes("./Rewards/Item"))
                 {
-                    rewardItems.Add(new ItemQuantity(childNode.AttributeToInt("ID"), childNode.AttributeToInt("Quantity")));
+                    rewardItems.Add(new ItemQuantity(childNode.AttributeAsInt("ID"), childNode.AttributeAsInt("Quantity")));
                 }
-                _quests.Add(new Quest(node.AttributeToInt("ID"),
+                _quests.Add(new Quest(node.AttributeAsInt("ID"),
                                       node.SelectSingleNode("./Name")?.InnerText ?? "",
                                       node.SelectSingleNode("./Description")?.InnerText ?? "",
                                       itemsToComplete,
-                                      node.AttributeToInt("RewardExperiencePoints"),
-                                      node.AttributeToInt("RewardGold"),
+                                      node.AttributeAsInt("RewardExperiencePoints"),
+                                      node.AttributeAsInt("RewardGold"),
                                       rewardItems));
             }
         }

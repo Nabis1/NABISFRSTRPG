@@ -11,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGameSessionOld", "TestG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGameSession", "TestGameSession\TestGameSession.csproj", "{03E5C09D-478D-401E-9F00-5839F088BE50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEngine", "TestEngine\TestEngine.csproj", "{8C4F388C-E717-4508-9280-E8EBD0D23E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestEngine", "TestEngine\TestEngine.csproj", "{8C4F388C-E717-4508-9280-E8EBD0D23E1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F7C642B3-44FC-4372-B42C-4B9E3B785644}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestInventory", "TestInventory\TestInventory.csproj", "{BD3FFEAE-6F57-4EB3-BE2D-F7FCDBF9C758}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestInventory", "TestInventory\TestInventory.csproj", "{BD3FFEAE-6F57-4EB3-BE2D-F7FCDBF9C758}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCombatService", "TestCombatService\TestCombatService.csproj", "{CAF22025-48C0-4097-B356-11FA4222ABF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{BD3FFEAE-6F57-4EB3-BE2D-F7FCDBF9C758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD3FFEAE-6F57-4EB3-BE2D-F7FCDBF9C758}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD3FFEAE-6F57-4EB3-BE2D-F7FCDBF9C758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF22025-48C0-4097-B356-11FA4222ABF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF22025-48C0-4097-B356-11FA4222ABF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF22025-48C0-4097-B356-11FA4222ABF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF22025-48C0-4097-B356-11FA4222ABF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{03E5C09D-478D-401E-9F00-5839F088BE50} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
 		{8C4F388C-E717-4508-9280-E8EBD0D23E1D} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
 		{BD3FFEAE-6F57-4EB3-BE2D-F7FCDBF9C758} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
+		{CAF22025-48C0-4097-B356-11FA4222ABF6} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76725A38-0ADC-4080-9B2B-75D5E9AB184F}

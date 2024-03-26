@@ -30,17 +30,17 @@ using Engine.Shared;
             foreach (XmlNode node in nodes)
             {
                 Recipe recipe =
-                    new Recipe(node.AttributeToInt("ID"),
+                    new Recipe(node.AttributeAsInt("ID"),
                                node.SelectSingleNode("./Name")?.InnerText ?? "");
                 foreach (XmlNode childNode in node.SelectNodes("./Ingredients/Item"))
                 {
-                    recipe.AddIngredient(childNode.AttributeToInt("ID"),
-                                         childNode.AttributeToInt("Quantity"));
+                    recipe.AddIngredient(childNode.AttributeAsInt("ID"),
+                                         childNode.AttributeAsInt("Quantity"));
                 }
                 foreach (XmlNode childNode in node.SelectNodes("./OutputItems/Item"))
                 {
-                    recipe.AddOutputItem(childNode.AttributeToInt("ID"),
-                                         childNode.AttributeToInt("Quantity"));
+                    recipe.AddOutputItem(childNode.AttributeAsInt("ID"),
+                                         childNode.AttributeAsInt("Quantity"));
                 }
                 _recipes.Add(recipe);
             }
