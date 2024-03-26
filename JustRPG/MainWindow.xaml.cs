@@ -9,11 +9,15 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
 using Engine.EventArgs;
 using Engine.Models;
+using Engine.Services;
 using Engine.ViewModels;
 namespace WPFUI
 
@@ -21,6 +25,7 @@ namespace WPFUI
     
     public partial class MainWindow : Window
     {
+        private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
         private readonly GameSession _gameSession = new GameSession();
         private readonly Dictionary<Key, Action> _userImputActions = new Dictionary<Key, Action>();
         public MainWindow()
@@ -28,7 +33,7 @@ namespace WPFUI
             InitializeComponent();
             InitializeUserInputActions();
             _gameSession = new GameSession();
-            _gameSession.OnMessageRaised += OnGameMessageRaised;
+            _messageBroker.OnMessageRaised += OnGameMessageRaised;
             DataContext = _gameSession;
         }
     
