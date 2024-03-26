@@ -15,7 +15,7 @@ namespace TestEngine.ViewModels
             gameSession.CurrentPlayer.Should().NotBeNull();
 
             //Assert.AreEqual("Town square", gameSession.CurrentLocation.Name);
-            gameSession.CurrentLocation.Name.Should().Be("Town Square");
+            gameSession.CurrentLocation.Name.Should().Be("Home");
         }
         [Test]
         public void TestPlayerMovesHomeAndIsCompletelyHealedOnKilled()

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Xml;
 using Engine.Models;
 using Engine.Shared;
-
 namespace Engine.Factories
 {
-    public class TraderFactory 
+    public static class TraderFactory
     {
         private const string GAME_DATA_FILENAME = ".\\GameData\\Traders.xml";
         private static readonly List<Trader> _traders = new List<Trader>();
@@ -17,20 +16,20 @@ namespace Engine.Factories
             {
                 XmlDocument data = new XmlDocument();
                 data.LoadXml(File.ReadAllText(GAME_DATA_FILENAME));
-                LoadTradersFromNodes(data.SelectNodes("/Traders/trader"));
+                LoadTradersFromNodes(data.SelectNodes("/Traders/Trader"));
             }
             else
             {
-                throw new FileNotFoundException($"Missing data file : {GAME_DATA_FILENAME}");
+                throw new FileNotFoundException($"Missing data file: {GAME_DATA_FILENAME}");
             }
-
         }
         private static void LoadTradersFromNodes(XmlNodeList nodes)
         {
             foreach (XmlNode node in nodes)
             {
                 Trader trader =
-                    new Trader(node.AttributeAsInt("ID"), node.SelectSingleNode("./Name")?.InnerText ?? "");
+                    new Trader(node.AttributeAsInt("ID"),
+                               node.SelectSingleNode("./Name")?.InnerText ?? "");
                 foreach (XmlNode childNode in node.SelectNodes("./InventoryItems/Item"))
                 {
                     int quantity = childNode.AttributeAsInt("Quantity");
@@ -41,12 +40,12 @@ namespace Engine.Factories
                         trader.AddItemToInventory(ItemFactory.CreateGameItem(childNode.AttributeAsInt("ID")));
                     }
                 }
+                _traders.Add(trader);
             }
         }
         public static Trader GetTraderByID(int id)
         {
             return _traders.FirstOrDefault(t => t.ID == id);
         }
-       
     }
 }
