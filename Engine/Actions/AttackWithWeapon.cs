@@ -26,14 +26,12 @@ namespace Engine.Actions
         }
         public void Execute(LivingEntity actor, LivingEntity target)
         {
-            int damage = RandomNumberGenerator.NumberBetween(_minimumDamage, _maximumDamage);
-
             string actorName = (actor is Player) ? "You" : $" {actor.Name}";
             string targetName = (target is Player) ? "You" : $" {target.Name}";
             if (CombatService.AttackSucceeded(actor,target))
             {
-                int damagee = RandomNumberGenerator.NumberBetween(_minimumDamage, _maximumDamage);
-                ReportResult($"{actorName} hit {targetName} for {damagee} point{(damagee > 1 ? "s" : "")}.");
+                int damage = RandomNumberGenerator.NumberBetween(_minimumDamage, _maximumDamage);
+                ReportResult($"{actorName} hit {targetName} for {damage} point{(damage > 1 ? "s" : "")}.");
                 target.TakeDamage(damage);
             }
             else

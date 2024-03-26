@@ -18,7 +18,7 @@ namespace Engine.Models
             _opponent.OnKilled += OnOpponentKilled;
             _messageBroker.RaiseMessage("");
             _messageBroker.RaiseMessage($"You see a {_opponent.Name} here!");
-            if (CombatService.FirstAttacker(_player,_opponent) == CombatService.Combatant.Opponent)
+            if (CombatService.FirstAttacker(_player, _opponent) == CombatService.Combatant.Opponent)
             {
                 AttackPlayer();
             }
