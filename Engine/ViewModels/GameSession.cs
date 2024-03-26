@@ -13,6 +13,7 @@ namespace Engine.ViewModels
         private Location _currentLocation;
         private Monster _currentMonster;
         private Trader _currentTrader;
+        public string Version { get; } = "0.1.000";
         public World CurrentWorld { get; }
         public Player CurrentPlayer
         {
@@ -92,8 +93,9 @@ namespace Engine.ViewModels
         #endregion
         public GameSession()
         {
+            CurrentWorld = WorldFactory.CreateWorld();
             int dexterity = RandomNumberGenerator.NumberBetween(3, 18);
-            CurrentPlayer = new Player("Jaydris", "Fighter", 0, 10, 10, dexterity, 10);
+            CurrentPlayer = new Player("Jaydris", "Warrior", 0, 10, 10, dexterity, 10);
             if (!CurrentPlayer.Inventory.Weapons.Any())
             {
                 CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));
@@ -105,6 +107,12 @@ namespace Engine.ViewModels
             CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3003));
             CurrentWorld = WorldFactory.CreateWorld();
             CurrentLocation = CurrentWorld.LocationAt(0, -1);
+        }
+        public GameSession(Player player,int xCoordinate,int yCoordinate)
+        {
+            CurrentWorld = WorldFactory.CreateWorld();
+            CurrentPlayer = player;
+            CurrentLocation = CurrentWorld.LocationAt(xCoordinate, yCoordinate);
         }
         public void MoveNorth()
         {

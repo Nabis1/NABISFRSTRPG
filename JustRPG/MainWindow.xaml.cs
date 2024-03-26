@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
+using System.ComponentModel;
 using System.Windows.Documents;
 using System.Windows.Input;
 using Engine.EventArgs;
@@ -22,7 +10,7 @@ using Engine.ViewModels;
 namespace WPFUI
 
 {
-    
+
     public partial class MainWindow : Window
     {
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
@@ -32,7 +20,7 @@ namespace WPFUI
         {
             InitializeComponent();
             InitializeUserInputActions();
-            _gameSession = new GameSession();
+            _gameSession = SaveGameService.LoadLastSaveOrCreateNew();
             _messageBroker.OnMessageRaised += OnGameMessageRaised;
             DataContext = _gameSession;
         }
@@ -114,6 +102,10 @@ namespace WPFUI
                     }
                 }
             }
+        }
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            SaveGameService.Save(_gameSession);
         }
     }
     
