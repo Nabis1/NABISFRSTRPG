@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Engine.Models
 {
@@ -15,11 +17,16 @@ namespace Engine.Models
             Weapon,
             Consumable
         }
+        [Newtonsoft.Json.JsonIgnore]
         public ItemCategory Category { get; }
         public int ItemTypeID { get; }
+        [Newtonsoft.Json.JsonIgnore]
         public string Name { get; }
+        [Newtonsoft.Json.JsonIgnore]
         public int Price { get; }
+        [Newtonsoft.Json.JsonIgnore]
         public bool IsUnique { get; }
+        [Newtonsoft.Json.JsonIgnore]
         public IAction Action { get; set; }
         public GameItem(ItemCategory category, int itemTypeID, string name, int price,
                         bool isUnique = false, IAction action = null)

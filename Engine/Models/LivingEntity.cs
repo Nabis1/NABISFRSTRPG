@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Services;
+using Newtonsoft.Json;
 
 namespace Engine.Models
 {
@@ -117,8 +118,9 @@ namespace Engine.Models
                 OnPropertyChanged();
             }
         }
-        
+        [Newtonsoft.Json.JsonIgnore]
         public bool IsAlive => CurrentHitPoints > 0;
+        [Newtonsoft.Json.JsonIgnore]
         public bool IsDead => !IsAlive;
         #endregion
         public event EventHandler<string> OnActionPerformed;

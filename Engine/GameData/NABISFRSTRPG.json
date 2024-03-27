@@ -1,216 +1,53 @@
-{
+﻿{
   "Version": "0.1.000",
-  "CurrentWorld": {},
   "CurrentPlayer": {
     "CharacterClass": "Fighter",
     "ExperiencePoints": 5,
     "Quests": [
       {
         "PlayerQuest": {
-          "ID": 1,
-          "Name": "Clear the herb garden",
-          "Description": "Defeat the snakes in the Herbalist's garden.",
-          "ItemsToComplete": [
-            {
-              "ItemID": 9001,
-              "Quantity": 5,
-              "QuantityItemDescription": "5 Snake fang"
-            }
-          ],
-          "RewardExperiencePoints": 25,
-          "RewardGold": 10,
-          "RewardItems": [
-            {
-              "ItemID": 1002,
-              "Quantity": 1,
-              "QuantityItemDescription": "1 Rusty sword"
-            }
-          ],
-          "ToolTipContents": "Defeat the snakes in the Herbalist's garden.\r\n\r\nItems to complete the quest\r\n===========================\r\n5 Snake fang\r\n\r\nRewards\r\n===========================\r\n25 experience points\r\n10 gold pieces\r\n1 Rusty sword"
+          "ID": 1
         },
         "IsCompleted": false
       }
     ],
     "Recipes": [
       {
-        "ID": 1,
-        "Name": "Granola bar",
-        "Ingredients": [
-          {
-            "ItemID": 3001,
-            "Quantity": 1,
-            "QuantityItemDescription": "1 Oats"
-          },
-          {
-            "ItemID": 3002,
-            "Quantity": 1,
-            "QuantityItemDescription": "1 Honey"
-          },
-          {
-            "ItemID": 3003,
-            "Quantity": 1,
-            "QuantityItemDescription": "1 Raisins"
-          }
-        ],
-        "OutputItems": [
-          {
-            "ItemID": 2001,
-            "Quantity": 1,
-            "QuantityItemDescription": "1 Granola bar"
-          }
-        ],
-        "ToolTipContents": "Ingredients\r\n===========\r\n1 Oats\r\n1 Honey\r\n1 Raisins\r\n\r\nCreates\r\n===========\r\n1 Granola bar"
+        "ID": 1
       }
     ],
-    "Name": "Scott",
+    "Name": "Jaydris",
     "Dexterity": 15,
     "CurrentHitPoints": 10,
     "MaximumHitPoints": 10,
-    "Gold": 2000003,
+    "Gold": 13,
     "Level": 1,
     "Inventory": {
       "Items": [
         {
-          "Category": 1,
-          "ItemTypeID": 1001,
-          "Name": "Pointy stick",
-          "Price": 1,
-          "IsUnique": true,
-          "Action": {}
+          "ItemTypeID": 1001
         },
         {
-          "Category": 2,
-          "ItemTypeID": 2001,
-          "Name": "Granola bar",
-          "Price": 5,
-          "IsUnique": false,
-          "Action": {}
+          "ItemTypeID": 2001
+        
         },
         {
-          "Category": 0,
-          "ItemTypeID": 3001,
-          "Name": "Oats",
-          "Price": 1,
-          "IsUnique": false,
-          "Action": null
+          "ItemTypeID": 3001
         },
         {
-          "Category": 0,
-          "ItemTypeID": 3002,
-          "Name": "Honey",
-          "Price": 2,
-          "IsUnique": false,
-          "Action": null
+          "ItemTypeID": 3002
         },
         {
-          "Category": 0,
-          "ItemTypeID": 3003,
-          "Name": "Raisins",
-          "Price": 2,
-          "IsUnique": false,
-          "Action": null
-        }
-      ],
-      "GroupedInventory": [
-        {
-          "Item": {
-            "Category": 1,
-            "ItemTypeID": 1001,
-            "Name": "Pointy stick",
-            "Price": 1,
-            "IsUnique": true,
-            "Action": {}
-          },
-          "Quantity": 1
-        },
-        {
-          "Item": {
-            "Category": 2,
-            "ItemTypeID": 2001,
-            "Name": "Granola bar",
-            "Price": 5,
-            "IsUnique": false,
-            "Action": {}
-          },
-          "Quantity": 1
-        },
-        {
-          "Item": {
-            "Category": 0,
-            "ItemTypeID": 3001,
-            "Name": "Oats",
-            "Price": 1,
-            "IsUnique": false,
-            "Action": null
-          },
-          "Quantity": 1
-        },
-        {
-          "Item": {
-            "Category": 0,
-            "ItemTypeID": 3002,
-            "Name": "Honey",
-            "Price": 2,
-            "IsUnique": false,
-            "Action": null
-          },
-          "Quantity": 1
-        },
-        {
-          "Item": {
-            "Category": 0,
-            "ItemTypeID": 3003,
-            "Name": "Raisins",
-            "Price": 2,
-            "IsUnique": false,
-            "Action": null
-          },
-          "Quantity": 1
-        }
-      ],
-      "Weapons": [
-        {
-          "Category": 1,
-          "ItemTypeID": 1001,
-          "Name": "Pointy stick",
-          "Price": 1,
-          "IsUnique": true,
-          "Action": {}
-        }
-      ],
-      "Consumables": [
-        {
-          "Category": 2,
-          "ItemTypeID": 2001,
-          "Name": "Granola bar",
-          "Price": 5,
-          "IsUnique": false,
-          "Action": {}
+          "ItemTypeID": 3003
         }
       ],
       "HasConsumable": true
     },
     "CurrentWeapon": null,
-    "CurrentConsumable": null,
-    "IsAlive": true,
-    "IsDead": false
+    "CurrentConsumable": null
   },
   "CurrentLocation": {
     "XCoordinate": 0,
-    "YCoordinate": 0,
-    "Name": "Town Square",
-    "Description": "You see a fountain here.",
-    "ImageName": "./Images/Locations/TownSquare.png",
-    "QuestsAvailableHere": [],
-    "MonstersHere": [],
-    "TraderHere": null
-  },
-  "CurrentMonster": null,
-  "CurrentTrader": null,
-  "HasLocationToNorth": true,
-  "HasLocationToEast": true,
-  "HasLocationToSouth": true,
-  "HasLocationToWest": true,
-  "HasMonster": false,
-  "HasTrader": false
+    "YCoordinate": 0
+  }
 }
