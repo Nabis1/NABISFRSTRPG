@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestInventory", "TestInvent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCombatService", "TestCombatService\TestCombatService.csproj", "{CAF22025-48C0-4097-B356-11FA4222ABF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSaveGameService", "TestSaveGameService\TestSaveGameService.csproj", "{D78B2BC6-D882-4FC4-86A5-DABACFD6A3D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{CAF22025-48C0-4097-B356-11FA4222ABF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAF22025-48C0-4097-B356-11FA4222ABF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAF22025-48C0-4097-B356-11FA4222ABF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D78B2BC6-D882-4FC4-86A5-DABACFD6A3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D78B2BC6-D882-4FC4-86A5-DABACFD6A3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D78B2BC6-D882-4FC4-86A5-DABACFD6A3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D78B2BC6-D882-4FC4-86A5-DABACFD6A3D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{8C4F388C-E717-4508-9280-E8EBD0D23E1D} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
 		{BD3FFEAE-6F57-4EB3-BE2D-F7FCDBF9C758} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
 		{CAF22025-48C0-4097-B356-11FA4222ABF6} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
+		{D78B2BC6-D882-4FC4-86A5-DABACFD6A3D6} = {F7C642B3-44FC-4372-B42C-4B9E3B785644}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76725A38-0ADC-4080-9B2B-75D5E9AB184F}
