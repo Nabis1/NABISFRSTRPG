@@ -62,6 +62,7 @@ namespace Engine.ViewModels
                 {
                     _currentBattle.OnCombatVictory -= OnCurrentMonsterKilled;
                     _currentBattle.Dispose();
+                    _currentBattle = null;
                 }
                 _currentMonster = value;
                 if (_currentMonster != null)
@@ -104,7 +105,7 @@ namespace Engine.ViewModels
         public GameSession()
         {
             CurrentWorld = WorldFactory.CreateWorld();
-            int dexterity = RandomNumberGenerator.NumberBetween(3, 18);
+            int dexterity = DiceService.Instance.Roll(6, 3).Value;
             CurrentPlayer = new Player("Jaydris", "Warrior", 0, 10, 10, dexterity, 10);
             if (!CurrentPlayer.Inventory.Weapons.Any())
             {
@@ -212,15 +213,31 @@ namespace Engine.ViewModels
         }
         public void AttackCurrentMonster()
         {
-            _currentBattle.AttackOpponent();
+            _currentBattle?.AttackOpponent();
         }
         public void UseCurrentConsumable()
         {
             if (CurrentPlayer.CurrentConsumable != null)
             {
+                if (_currentBattle == null)
+                {
+                    CurrentPlayer.OnActionPerformed += OnConsumableActionPerformed;
+                }
+
                 CurrentPlayer.UseCurrentConsumable();
+
+                if (_currentBattle == null)
+                {
+                    CurrentPlayer.OnActionPerformed -= OnConsumableActionPerformed;
+                }
             }
         }
+
+        private void OnConsumableActionPerformed(object sender, string result)
+        {
+            _messageBroker.RaiseMessage(result);
+        }
+
         public void CraftItemUsing(Recipe recipe)
         {
             if (CurrentPlayer.Inventory.HasAllTheseItems(recipe.Ingredients))

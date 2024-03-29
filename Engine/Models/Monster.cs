@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Engine.Factories;
+using Engine.Services;
 namespace Engine.Models
 {
     public class Monster : LivingEntity
@@ -38,7 +39,7 @@ namespace Engine.Models
                 // Clone the loot table - even though we probably won't need it
                 newMonster.AddItemToLootTable(itemPercentage.ID, itemPercentage.Percentage);
                 // Populate the new monster's inventory, using the loot table
-                if (RandomNumberGenerator.NumberBetween(1, 100) <= itemPercentage.Percentage)
+                if (DiceService.Instance.Roll(100).Value <= itemPercentage.Percentage)
                 {
                     newMonster.AddItemToInventory(ItemFactory.CreateGameItem(itemPercentage.ID));
                 }
