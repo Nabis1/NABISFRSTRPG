@@ -20,16 +20,13 @@ namespace WPFUI
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
         private GameSession _gameSession;
         private readonly Dictionary<Key, Action> _userImputActions = new Dictionary<Key, Action>();
-        public MainWindow()
+        public MainWindow(Player player)
         {
             InitializeComponent();
             InitializeUserInputActions();
-            SetActiveGameSessionTo(new GameSession());
+            SetActiveGameSessionTo(new GameSession(player,0,0));
         }
-        public MainWindow(Player player) : this()
-        {
-            _gameSession.CurrentPlayer = player;
-        }
+        
     
         private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
         {
@@ -119,20 +116,20 @@ namespace WPFUI
         }
         private void StartNewGame_OnClick(object sender, RoutedEventArgs e)
         {
-            SetActiveGameSessionTo(new GameSession());
+            //SetActiveGameSessionTo(new GameSession());
         }
         private void LoadGame_OnClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog =
-                new OpenFileDialog
-                {
-                    InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
-                    Filter = $"Saved games (*.{SAVE_GAME_FILE_EXTENSION})|*.{SAVE_GAME_FILE_EXTENSION}"
-                };
-            if (openFileDialog.ShowDialog() == true)
-            {
-                SetActiveGameSessionTo(SaveGameService.LoadLastSaveOrCreateNew(openFileDialog.FileName));
-            }
+            //OpenFileDialog openFileDialog =
+            //    new OpenFileDialog
+            //    {
+            //        InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
+            //        Filter = $"Saved games (*.{SAVE_GAME_FILE_EXTENSION})|*.{SAVE_GAME_FILE_EXTENSION}"
+            //    };
+            //if (openFileDialog.ShowDialog() == true)
+            //{
+            //    SetActiveGameSessionTo(SaveGameService.LoadLastSaveOrCreateNew(openFileDialog.FileName));
+            //}
         }
         private void SaveGame_OnClick(object sender, RoutedEventArgs e)
         {
@@ -163,7 +160,7 @@ namespace WPFUI
                 };
             if (saveFileDialog.ShowDialog() == true)
             {
-                SaveGameService.Save(_gameSession, saveFileDialog.FileName);
+                //SaveGameService.Save(_gameSession, saveFileDialog.FileName);
             }
         }
     }

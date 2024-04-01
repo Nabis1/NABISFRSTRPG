@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Engine.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,10 @@ namespace Engine.Shared
         public static string StringValueOf(this JObject jsonObject, string key) => jsonObject[key].ToString();
         public static string StringValueOf(this JToken jsonToken, string key) => jsonToken[key].ToString();
         public static int IntValueOf(this JToken jsonToken, string key) => Convert.ToInt32(jsonToken[key]);
+
+        public static PlayerAttribute GetAttribute(this LivingEntity entity,string attributeKey)
+        { 
+            return entity.Attributes.First(pa => pa.Key.Equals(attributeKey,StringComparison.CurrentCultureIgnoreCase));
+        }
     }
 }
