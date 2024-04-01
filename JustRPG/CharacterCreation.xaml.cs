@@ -1,22 +1,30 @@
 ﻿using System.Windows;
-using Engine.Models;
-using Engine.Services;
+using System.Windows.Controls;
+using Engine.ViewModels;
 namespace WPFUI
 {
     public partial class CharacterCreation : Window
     {
-        private GameDetails _gameDetails;
+        private CharacterCreationViewModel VM { get; set; }
         public CharacterCreation()
         {
             InitializeComponent();
-            _gameDetails = GameDetailsService.ReadGameDetails();
-            DataContext = _gameDetails;
+            VM = new CharacterCreationViewModel();
+            DataContext = VM;
         }
         private void RandomPlayer_OnClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            VM.RollNewCharacter();
+        }
+        private void UseThisPlayer_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow(VM.GetPlayer());
             mainWindow.Show();
             Close();
+        }
+        private void Race_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            VM.ApplyAttributeModifiers();
         }
     }
 }

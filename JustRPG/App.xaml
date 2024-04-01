@@ -4,7 +4,10 @@
              xmlns:converters="clr-namespace:WPFUI.CustomConverters"
              DispatcherUnhandledException="App_OnDispatcherUnhandledException"
              StartupUri="Startup.xaml">
+
     <Application.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <converters:FileToBitmapConverter x:Key="FileToBitmapConverter"/>
     </Application.Resources>
+
 </Application>
