@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace Engine.Shared
             }
             return attribute.Value;
         }
-
+        public static string StringValueOf(this JObject jsonObject, string key) => jsonObject[key].ToString();
+        public static string StringValueOf(this JToken jsonToken, string key) => jsonToken[key].ToString();
+        public static int IntValueOf(this JToken jsonToken, string key) => Convert.ToInt32(jsonToken[key]);
     }
 }
