@@ -3,18 +3,30 @@ using Engine.Factories;
 using Engine.Models;
 using Engine.Services;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 namespace Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
+        private GameDetails _gameDetails;
         private Battle _currentBattle;
         #region Properties
         private Player _currentPlayer;
         private Location _currentLocation;
         private Monster _currentMonster;
         private Trader _currentTrader;
-        public string Version { get; } = "0.1.000";
+
+        [JsonIgnore]
+        public GameDetails GameDetails
+        {
+            get => _gameDetails;
+            set
+            {
+                _gameDetails = value;
+                OnPropertyChanged();
+            }
+        }
         [JsonIgnore]
         public World CurrentWorld { get; }
         public Player CurrentPlayer
@@ -153,6 +165,16 @@ namespace Engine.ViewModels
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate);
             }
         }
+        private void PopulateGameDetails()
+        {
+            JObject gameDetails = JObject.Parse(File.ReadAllText(".\\GameData\\Gamedetails.json"));
+            GameDetails = new GameDetails(gameDetails["Name"].ToString(),gameDetails["Version"].ToString());
+            foreach(JToken token in gameDetails["PlayerAttributes"])
+            {
+                GameDetails.PlayerAttributes.Add(new PlayerAttribute(token["Key"].ToString(), token["DisplayName"].ToString(), token["DiceNation"].ToString()));
+            }
+        }
+
         private void CompleteQuestsAtLocation()
         {
             foreach (Quest quest in CurrentLocation.QuestsAvailableHere)
