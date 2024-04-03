@@ -11,4 +11,14 @@
 			<Item ID="2001" Quantity="1"/>
 		</OutputItems>
 	</Recipe>
+	<Recipe ID="2">
+		<Name><![CDATA[Snake Sword]]></Name>
+		<Ingredients>
+			<Item ID="9001" Quantity="10"/>
+			<Item ID="9002" Quantity="1"/>
+		</Ingredients>
+		<OutputItems>
+			<Item ID="9999" Quantity="1"/>
+		</OutputItems>
+	</Recipe>
 </Recipes>

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Xml;
 using Engine.Models;
 using Engine.Shared;
+using System.Text.Json;
 
-    namespace Engine.Factories
-{ 
+namespace Engine.Factories
+{
     public static class RecipeFactory
     {
-            private const string GAME_DATA_FILENAME = (".\\GameData\\Recipes.xml");
-        private static readonly List<Recipe> _recipes = new  List<Recipe>();
+        private const string GAME_DATA_FILENAME = (".\\GameData\\Recipes.xml");
+        private static readonly List<Recipe> _recipes = new List<Recipe>();
 
         static RecipeFactory()
         {
@@ -46,9 +47,9 @@ using Engine.Shared;
             }
         }
         public static Recipe RecipeByID(int id)
-            {
-                return _recipes.FirstOrDefault(x => x.ID == id);
-            }
-        
+        {
+            return _recipes.FirstOrDefault(x => x.ID == id);
+        }
+
     }
 }

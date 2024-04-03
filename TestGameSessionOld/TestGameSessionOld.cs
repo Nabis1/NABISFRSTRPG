@@ -1,21 +1,27 @@
+using Engine.Models;
 using Engine.ViewModels;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace TestEngine.ViewModels
 {
     [TestClass]
     public class TestGameSession
     {
+        private readonly Player _player = new("Nabis", 5, 10, 10,
+            new List<PlayerAttribute> { new("ag", "agility", "1d5") }, 0);
+
+        private static (int x, int y) Coordinates => (0, -1);
+
         [TestMethod]
         public void TestCreateGameSession()
         {
-            GameSession gameSession = new GameSession();
+            var gameSession = new GameSession(_player, Coordinates.x, Coordinates.y);
             Assert.IsNotNull(gameSession.CurrentPlayer);
             Assert.AreEqual("Home", gameSession.CurrentLocation.Name);
         }
         [TestMethod]
         public void TestPlayerMovesHomeAndIsCompletelyHealedOnKilled()
         {
-            GameSession gameSession = new GameSession();
+            var gameSession = new GameSession(_player, Coordinates.x, Coordinates.y);
             gameSession.CurrentPlayer.TakeDamage(999);
             Assert.AreEqual("Home", gameSession.CurrentLocation.Name);
             Assert.AreEqual(gameSession.CurrentPlayer.Level * 10, gameSession.CurrentPlayer.CurrentHitPoints);

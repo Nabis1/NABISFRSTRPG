@@ -1,6 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using Engine.EventArgs;
@@ -9,25 +11,21 @@ using Engine.Services;
 using Engine.ViewModels;
 using Microsoft.Win32;
 using WPFUI.Windows;
-using System.IO;
 namespace WPFUI
-
 {
-
     public partial class MainWindow : Window
     {
-        private const string SAVE_GAME_FILE_EXTENSION = "NabisFrstRpg";
+        private const string SAVE_GAME_FILE_EXTENSION = "soscsrpg";
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
+        private readonly Dictionary<Key, Action> _userInputActions =
+            new Dictionary<Key, Action>();
         private GameSession _gameSession;
-        private readonly Dictionary<Key, Action> _userImputActions = new Dictionary<Key, Action>();
-        public MainWindow(Player player)
+        public MainWindow(Player player, int xLocation = 0, int yLocation = 0)
         {
             InitializeComponent();
             InitializeUserInputActions();
-            SetActiveGameSessionTo(new GameSession(player,0,0));
+            SetActiveGameSessionTo(new GameSession(player, xLocation, yLocation));
         }
-        
-    
         private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
         {
             _gameSession.MoveNorth();
@@ -74,22 +72,22 @@ namespace WPFUI
         }
         private void InitializeUserInputActions()
         {
-            _userImputActions.Add(Key.W, () => _gameSession.MoveNorth());
-            _userImputActions.Add(Key.A, () => _gameSession.MoveWest());
-            _userImputActions.Add(Key.D, () => _gameSession.MoveEast());
-            _userImputActions.Add(Key.S, () => _gameSession.MoveSouth());
-            _userImputActions.Add(Key.Z, () => _gameSession.AttackCurrentMonster());
-            _userImputActions.Add(Key.C, () => _gameSession.UseCurrentConsumable());
-            _userImputActions.Add(Key.I, () => SetTabFocusTo("InventoryTabItem"));
-            _userImputActions.Add(Key.Q, () => SetTabFocusTo("QuestTabItem"));
-            _userImputActions.Add(Key.R, () => SetTabFocusTo("RecipesTabItem"));
-            _userImputActions.Add(Key.T, () => OnClick_DisplayTradeScreen(this, new RoutedEventArgs()));
+            _userInputActions.Add(Key.W, () => _gameSession.MoveNorth());
+            _userInputActions.Add(Key.A, () => _gameSession.MoveWest());
+            _userInputActions.Add(Key.S, () => _gameSession.MoveSouth());
+            _userInputActions.Add(Key.D, () => _gameSession.MoveEast());
+            _userInputActions.Add(Key.Z, () => _gameSession.AttackCurrentMonster());
+            _userInputActions.Add(Key.C, () => _gameSession.UseCurrentConsumable());
+            _userInputActions.Add(Key.I, () => SetTabFocusTo("InventoryTabItem"));
+            _userInputActions.Add(Key.Q, () => SetTabFocusTo("QuestsTabItem"));
+            _userInputActions.Add(Key.R, () => SetTabFocusTo("RecipesTabItem"));
+            _userInputActions.Add(Key.T, () => OnClick_DisplayTradeScreen(this, new RoutedEventArgs()));
         }
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {
-            if(_userImputActions.ContainsKey(e.Key))
+            if (_userInputActions.ContainsKey(e.Key))
             {
-                _userImputActions[e.Key].Invoke();
+                _userInputActions[e.Key].Invoke();
             }
         }
         private void SetTabFocusTo(string tabName)
@@ -108,28 +106,19 @@ namespace WPFUI
         }
         private void SetActiveGameSessionTo(GameSession gameSession)
         {
+            // Unsubscribe from OnMessageRaised, or we will get double messages
+            _messageBroker.OnMessageRaised -= OnGameMessageRaised;
             _gameSession = gameSession;
             DataContext = _gameSession;
-            _messageBroker.OnMessageRaised -= OnGameMessageRaised;
+            // Clear out previous game's messages
             GameMessages.Document.Blocks.Clear();
             _messageBroker.OnMessageRaised += OnGameMessageRaised;
         }
         private void StartNewGame_OnClick(object sender, RoutedEventArgs e)
         {
-            //SetActiveGameSessionTo(new GameSession());
-        }
-        private void LoadGame_OnClick(object sender, RoutedEventArgs e)
-        {
-            //OpenFileDialog openFileDialog =
-            //    new OpenFileDialog
-            //    {
-            //        InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
-            //        Filter = $"Saved games (*.{SAVE_GAME_FILE_EXTENSION})|*.{SAVE_GAME_FILE_EXTENSION}"
-            //    };
-            //if (openFileDialog.ShowDialog() == true)
-            //{
-            //    SetActiveGameSessionTo(SaveGameService.LoadLastSaveOrCreateNew(openFileDialog.FileName));
-            //}
+            Startup startup = new Startup();
+            startup.Show();
+            Close();
         }
         private void SaveGame_OnClick(object sender, RoutedEventArgs e)
         {
@@ -140,6 +129,10 @@ namespace WPFUI
             Close();
         }
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            AskToSaveGame();
+        }
+        private void AskToSaveGame()
         {
             YesNoWindow message =
                 new YesNoWindow("Save Game", "Do you want to save your game?");
@@ -160,10 +153,8 @@ namespace WPFUI
                 };
             if (saveFileDialog.ShowDialog() == true)
             {
-                //SaveGameService.Save(_gameSession, saveFileDialog.FileName);
+                SaveGameService.Save(_gameSession, saveFileDialog.FileName);
             }
         }
     }
-    
-
 }

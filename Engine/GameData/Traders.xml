@@ -16,6 +16,7 @@
 		<Name><![CDATA[Pete the Herbalist]]></Name>
 		<InventoryItems>
 			<Item ID="1001" Quantity="1"/>
+			<Item ID="9999" Quantity="1"/>
 		</InventoryItems>
 	</Trader>
 </Traders>
