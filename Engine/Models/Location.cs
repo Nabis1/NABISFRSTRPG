@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Engine.Services;
 using Newtonsoft.Json;
+using NABISFRSTRPG.Core;
 
 namespace Engine.Models
 {

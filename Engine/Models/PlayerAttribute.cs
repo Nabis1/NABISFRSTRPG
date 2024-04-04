@@ -1,5 +1,6 @@
 ﻿using Engine.Services;
 using System.ComponentModel;
+using NABISFRSTRPG.Core;
 namespace Engine.Models
 {
     public class PlayerAttribute : INotifyPropertyChanged

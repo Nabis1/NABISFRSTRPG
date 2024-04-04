@@ -1,14 +1,15 @@
 ﻿using System;
 using Engine.Models;
 using Engine.Services;
+using NABISFRSTRPG.Core;
 namespace Engine.Actions
 {
     public class AttackWithWeapon : BaseAction, IAction
     {
         private readonly string _damageDice;
         public AttackWithWeapon(GameItem itemInUse, string damageDice)
-             : base(itemInUse)
-        {
+            : base(itemInUse)
+        {       
             if (itemInUse.Category != GameItem.ItemCategory.Weapon)
             {
                 throw new ArgumentException($"{itemInUse.Name} is not a weapon");
@@ -21,9 +22,9 @@ namespace Engine.Actions
         }
         public void Execute(LivingEntity actor, LivingEntity target)
         {
-            string actorName = (actor is Player) ? "You" : $" {actor.Name}";
-            string targetName = (target is Player) ? "You" : $" {target.Name}";
-            if (CombatService.AttackSucceeded(actor,target))
+            string actorName = (actor is Player) ? "You" : $"The {actor.Name.ToLower()}";
+            string targetName = (target is Player) ? "you" : $"the {target.Name.ToLower()}";
+            if (CombatService.AttackSucceeded(actor, target))
             {
                 int damage = DiceService.Instance.Roll(_damageDice).Value;
                 ReportResult($"{actorName} hit {targetName} for {damage} point{(damage > 1 ? "s" : "")}.");

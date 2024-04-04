@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NABISFRSTRPG.Models", "nabi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NABISFRSTRPG.Services", "nabisfrstrpg.Services\NABISFRSTRPG.Services.csproj", "{A007F0F0-6440-4D1C-B0A4-A4E1F36E4F4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NABISFRSTRPG.Core", "NABISFRSTRPG.Core\NABISFRSTRPG.Core.csproj", "{7267D1BD-F855-4CD4-A83D-1472942D0089}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{A007F0F0-6440-4D1C-B0A4-A4E1F36E4F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A007F0F0-6440-4D1C-B0A4-A4E1F36E4F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A007F0F0-6440-4D1C-B0A4-A4E1F36E4F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7267D1BD-F855-4CD4-A83D-1472942D0089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7267D1BD-F855-4CD4-A83D-1472942D0089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7267D1BD-F855-4CD4-A83D-1472942D0089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7267D1BD-F855-4CD4-A83D-1472942D0089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
