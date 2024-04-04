@@ -16,15 +16,15 @@ namespace Engine.Models
         [JsonIgnore]
         public List<ItemQuantity> Ingredients { get; } 
         public List<ItemQuantity> OutputItems { get; } 
-       // [JsonIgnore]
-       // public string ToolTipContents =>
-         //   "Ingredients" + Environment.NewLine +
-           // "===========" + Environment.NewLine +
-           // string.Join(Environment.NewLine, Ingredients.Select(i => InsertSpaceAfterNumber(i.QuantityItemDescription))) +
-           // Environment.NewLine + Environment.NewLine +
-           // "Creates" + Environment.NewLine +
-           // "===========" + Environment.NewLine +
-           // string.Join(Environment.NewLine, OutputItems.Select(i => InsertSpaceAfterNumber(i.QuantityItemDescription)));
+        [JsonIgnore]
+        public string ToolTipContents =>
+            "Ingredients" + Environment.NewLine +
+            "===========" + Environment.NewLine +
+            string.Join(Environment.NewLine, Ingredients.Select(i => InsertSpaceAfterNumber(i.QuantityItemDescription))) +
+            Environment.NewLine + Environment.NewLine +
+            "Creates" + Environment.NewLine +
+            "===========" + Environment.NewLine +
+            string.Join(Environment.NewLine, OutputItems.Select(i => InsertSpaceAfterNumber(i.QuantityItemDescription)));
         private string InsertSpaceAfterNumber(string spaceAfterNumber)
         {
             return Regex.Replace(spaceAfterNumber, @"(\d)([A-Za-z])", "$1 $2");

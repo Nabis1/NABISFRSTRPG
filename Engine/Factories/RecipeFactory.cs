@@ -36,13 +36,13 @@ namespace Engine.Factories
                 foreach (XmlNode childNode in node.SelectNodes("./Ingredients/Item"))
                 {
                     GameItem item = ItemFactory.CreateGameItem(childNode.AttributeAsInt("ID"));
-                    ingredients.Add(new ItemQuantity(item, childNode.AttributeAsInt("ID")));
+                    ingredients.Add(new ItemQuantity(item, childNode.AttributeAsInt("Quantity")));
                 }
                 var outputItems = new List<ItemQuantity>();
                 foreach (XmlNode childNode in node.SelectNodes("./OutputItems/Item"))
                 {
                     GameItem item = ItemFactory.CreateGameItem(childNode.AttributeAsInt("ID"));
-                    outputItems.Add(new ItemQuantity(item, childNode.AttributeAsInt("ID")));
+                    outputItems.Add(new ItemQuantity(item, childNode.AttributeAsInt("Quantity")));
                 }
                 Recipe recipe =
                     new Recipe(node.AttributeAsInt("ID"),
