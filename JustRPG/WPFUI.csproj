@@ -11,8 +11,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj" />
-    <ProjectReference Include="..\nabisfrstrpg.Models\nabisfrstrpg.Models.csproj" />
-    <ProjectReference Include="..\nabisfrstrpg.ViewModels\nabisfrstrpg.ViewModels.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.Models\NABISFRSTRPG.Models.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.ViewModels\NABISFRSTRPG.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>

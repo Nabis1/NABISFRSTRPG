@@ -5,7 +5,7 @@ using Engine.Services;
 using Engine.Factories;
 using System.Numerics;
 using System.ComponentModel;
-namespace Engine.ViewModels
+namespace NABISFRSTRPG.ViewModels
 {
     public class CharacterCreationViewModel : INotifyPropertyChanged
     {
