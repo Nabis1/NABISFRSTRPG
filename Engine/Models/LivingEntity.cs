@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Services;
+using System.ComponentModel;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
 namespace Engine.Models
 {
-    public abstract class LivingEntity : BaseNotificationClass
+    public abstract class LivingEntity : INotifyPropertyChanged
     {
         #region Properties
         private string _name;
@@ -22,6 +23,8 @@ namespace Engine.Models
         private GameItem _currentConsumable;
         private Inventory _inventory;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ObservableCollection<PlayerAttribute> Attributes { get; } = new ObservableCollection<PlayerAttribute>();
         public string Name
         {
@@ -29,7 +32,6 @@ namespace Engine.Models
             private set
             {
                 _name = value;
-                OnPropertyChanged();
             }
         }
         
@@ -39,7 +41,6 @@ namespace Engine.Models
             private set
             {
                 _currentHitPoints = value;
-                OnPropertyChanged();
             }
         }
         public int MaximumHitPoints
@@ -48,7 +49,6 @@ namespace Engine.Models
             protected set
             {
                 _maximumHitPoints = value;
-                OnPropertyChanged();
             }
         }
         public int Gold
@@ -57,7 +57,6 @@ namespace Engine.Models
             private set
             {
                 _gold = value;
-                OnPropertyChanged();
             }
         }
         public int Level
@@ -66,7 +65,6 @@ namespace Engine.Models
             protected set
             {
                 _level = value;
-                OnPropertyChanged();
             }
         }
         public Inventory Inventory
@@ -75,7 +73,6 @@ namespace Engine.Models
             private set
             {
                 _inventory = value;
-                OnPropertyChanged();
             }
         }
         public GameItem CurrentWeapon
@@ -92,7 +89,6 @@ namespace Engine.Models
                 {
                     _currentWeapon.Action.OnActionPerformed += RaiseActionPerformedEvent;
                 }
-                OnPropertyChanged();
             }
         }
         public GameItem CurrentConsumable
@@ -109,7 +105,6 @@ namespace Engine.Models
                 {
                     _currentConsumable.Action.OnActionPerformed += RaiseActionPerformedEvent;
                 }
-                OnPropertyChanged();
             }
         }
         [Newtonsoft.Json.JsonIgnore]

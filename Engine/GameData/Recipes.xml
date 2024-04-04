@@ -11,6 +11,7 @@
 			<Item ID="2001" Quantity="1"/>
 		</OutputItems>
 	</Recipe>
+
 	<Recipe ID="2">
 		<Name><![CDATA[Snake Sword]]></Name>
 		<Ingredients>

@@ -4,19 +4,21 @@ using Engine.Models;
 using Engine.Services;
 using Engine.Factories;
 using System.Numerics;
+using System.ComponentModel;
 namespace Engine.ViewModels
 {
-    public class CharacterCreationViewModel : BaseNotificationClass
+    public class CharacterCreationViewModel : INotifyPropertyChanged
     {
         private Race _selectedRace;
         public GameDetails GameDetails { get; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public Race SelectedRace
         {
             get => _selectedRace;
             set
             {
                 _selectedRace = value;
-                OnPropertyChanged();
             }
         }
         public string Name { get; set; }
@@ -65,6 +67,7 @@ namespace Engine.ViewModels
             player.AddItemToInventory(ItemFactory.CreateGameItem(1001));
             player.AddItemToInventory(ItemFactory.CreateGameItem(2001));
             player.LearnRecipe(RecipeFactory.RecipeByID(1));
+            player.LearnRecipe(RecipeFactory.RecipeByID(2));
             player.AddItemToInventory(ItemFactory.CreateGameItem(3001));
             player.AddItemToInventory(ItemFactory.CreateGameItem(3002));
             player.AddItemToInventory(ItemFactory.CreateGameItem(3003));

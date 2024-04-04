@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\nabisfrstrpg.Models\nabisfrstrpg.Models.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.Services\nabisfrstrpg.Services.csproj" />
+  </ItemGroup>
+
+</Project>
