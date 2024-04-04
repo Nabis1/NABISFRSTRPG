@@ -15,7 +15,7 @@ namespace WPFUI
 {
     public partial class MainWindow : Window
     {
-        private const string SAVE_GAME_FILE_EXTENSION = "soscsrpg";
+        private const string SAVE_GAME_FILE_EXTENSION = "nabisfrstrpg";
         private readonly MessageBroker _messageBroker = MessageBroker.GetInstance();
         private readonly Dictionary<Key, Action> _userInputActions =
             new Dictionary<Key, Action>();

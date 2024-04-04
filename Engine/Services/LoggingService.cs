@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Engine.Services
+namespace NABISFRSTRPG.Services
 {
     public static class LoggingService
     {

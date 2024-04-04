@@ -240,7 +240,7 @@ namespace Engine.ViewModels
                 foreach (ItemQuantity itemQuantity in recipe.Ingredients)
                 {
                     _messageBroker
-                        .RaiseMessage($"  {itemQuantity.Quantity} {ItemFactory.ItemName(itemQuantity.ItemID)}");
+                        .RaiseMessage($"  {itemQuantity.QuantityItemDescription}");
                 }
             }
         }
