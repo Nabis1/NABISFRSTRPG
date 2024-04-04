@@ -8,19 +8,10 @@ using System.ComponentModel;
 namespace Engine.Models
 {
         public class QuestStatus : INotifyPropertyChanged
-    { 
-            private bool _isCompleted;
-            public Quest PlayerQuest { get; }
-
+    {
         public event PropertyChangedEventHandler PropertyChanged;
-            public bool IsCompleted
-         {
-            get { return _isCompleted; }
-            set
-            {
-                _isCompleted = value;
-            }
-         }
+        public Quest PlayerQuest { get; }
+        public bool IsCompleted { get; set; }
 
         public QuestStatus(Quest quest)
             {
