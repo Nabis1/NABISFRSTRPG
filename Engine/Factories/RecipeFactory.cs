@@ -5,6 +5,7 @@ using System.Xml;
 using Engine.Models;
 using Engine.Shared;
 using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace Engine.Factories
 {
@@ -30,14 +31,14 @@ namespace Engine.Factories
         {
             foreach (XmlNode node in nodes)
             {
-               var ingredients = new List<ItemQuantity>();
+                var ingredients = new List<ItemQuantity>();
 
                 foreach (XmlNode childNode in node.SelectNodes("./Ingredients/Item"))
                 {
                     GameItem item = ItemFactory.CreateGameItem(childNode.AttributeAsInt("ID"));
                     ingredients.Add(new ItemQuantity(item, childNode.AttributeAsInt("ID")));
                 }
-                var outputItems = new List<ItemQuantity>(); 
+                var outputItems = new List<ItemQuantity>();
                 foreach (XmlNode childNode in node.SelectNodes("./OutputItems/Item"))
                 {
                     GameItem item = ItemFactory.CreateGameItem(childNode.AttributeAsInt("ID"));

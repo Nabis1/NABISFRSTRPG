@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.csproj" />
     <ProjectReference Include="..\nabisfrstrpg.Models\NABISFRSTRPG.Models.csproj" />
     <ProjectReference Include="..\nabisfrstrpg.Services\NABISFRSTRPG.Services.csproj" />
   </ItemGroup>

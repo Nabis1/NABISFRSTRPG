@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{ECDB7EAB-D1CF-468D-AD6D-02BEF35F6EA2}"
 	ProjectSection(SolutionItems) = preProject
 		LicensesConsumed.md = LicensesConsumed.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NABISFRSTRPG.ViewModels", "nabisfrstrpg.ViewModels\NABISFRSTRPG.ViewModels.csproj", "{CF5796A1-3105-4153-951D-CD41A4784202}"
@@ -30,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NABISFRSTRPG.Models", "nabi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NABISFRSTRPG.Services", "nabisfrstrpg.Services\NABISFRSTRPG.Services.csproj", "{A007F0F0-6440-4D1C-B0A4-A4E1F36E4F4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NABISFRSTRPG.Core", "NABISFRSTRPG.Core\NABISFRSTRPG.Core.csproj", "{7267D1BD-F855-4CD4-A83D-1472942D0089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NABISFRSTRPG.Core", "NABISFRSTRPG.Core\NABISFRSTRPG.Core.csproj", "{7267D1BD-F855-4CD4-A83D-1472942D0089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

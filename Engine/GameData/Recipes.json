@@ -1,0 +1,48 @@
+﻿{
+  "Recipes": [
+    {
+      "ID": "1",
+      "Name": "Granola bar",
+      "Ingredients": [
+        {
+          "ID": "3001",
+          "Quantity": "1"
+        },
+        {
+          "ID": "3002",
+          "Quantity": "1"
+        },
+        {
+          "ID": "3003",
+          "Quantity": "1"
+        }
+      ],
+      "OutputItems": [
+        {
+          "ID": "2001",
+          "Quantity": "1"
+        }
+      ]
+    },
+    {
+      "ID": "2",
+      "Name": "Snake Sword",
+      "Ingredients": [
+        {
+          "ID": "9001",
+          "Quantity": "10"
+        },
+        {
+          "ID": "9002",
+          "Quantity": "1"
+        }
+      ],
+      "OutputItems": [
+        {
+          "ID": "9999",
+          "Quantity": "1"
+        }
+      ]
+    }
+  ]
+}
