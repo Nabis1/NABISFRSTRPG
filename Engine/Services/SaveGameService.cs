@@ -10,12 +10,12 @@ namespace Engine.Services
 {
     public static class SaveGameService
     {
-        public static void Save(GameSession gameSession, string fileName)
+        public static void Save(GameState gameState, string fileName)
         {
             File.WriteAllText(fileName,
-                              JsonConvert.SerializeObject(gameSession, Formatting.Indented));
+                              JsonConvert.SerializeObject(gameState, Formatting.Indented));
         }
-        public static GameSession LoadLastSaveOrCreateNew(string fileName)
+        public static GameState LoadLastSaveOrCreateNew(string fileName)
         {
             if (!File.Exists(fileName))
             {
@@ -27,10 +27,10 @@ namespace Engine.Services
                 JObject data = JObject.Parse(File.ReadAllText(fileName));
                 // Populate Player object
                 Player player = CreatePlayer(data);
-                int x = (int)data[nameof(GameSession.CurrentLocation)][nameof(Location.XCoordinate)];
-                int y = (int)data[nameof(GameSession.CurrentLocation)][nameof(Location.YCoordinate)];
-                // Create GameSession object with saved game data
-                return new GameSession(player, x, y);
+                int x = (int)data[nameof(GameState.XCoordinate)];
+                int y = (int)data[nameof(GameState.YCoordinate)];
+                // Create GameState object with saved game data
+                return new GameState(player, x, y);
             }
             catch
             {
@@ -40,12 +40,12 @@ namespace Engine.Services
         private static Player CreatePlayer(JObject data)
         {
             Player player =
-                new Player((string)data[nameof(GameSession.CurrentPlayer)][nameof(Player.Name)],
-                           (int)data[nameof(GameSession.CurrentPlayer)][nameof(Player.ExperiencePoints)],
-                           (int)data[nameof(GameSession.CurrentPlayer)][nameof(Player.MaximumHitPoints)],
-                           (int)data[nameof(GameSession.CurrentPlayer)][nameof(Player.CurrentHitPoints)],
+                new Player((string)data[nameof(GameState.Player)][nameof(Player.Name)],
+                           (int)data[nameof(GameState.Player)][nameof(Player.ExperiencePoints)],
+                           (int)data[nameof(GameState.Player)][nameof(Player.MaximumHitPoints)],
+                           (int)data[nameof(GameState.Player)][nameof(Player.CurrentHitPoints)],
                            GetPlayerAttributes(data),
-                           (int)data[nameof(GameSession.CurrentPlayer)][nameof(Player.Gold)]);
+                           (int)data[nameof(GameState.Player)][nameof(Player.Gold)]);
             PopulatePlayerInventory(data, player);
             PopulatePlayerQuests(data, player);
             PopulatePlayerRecipes(data, player);
