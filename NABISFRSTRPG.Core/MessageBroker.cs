@@ -1,6 +1,5 @@
 ﻿using System;
-using NABISFRSTRPG.Models.EventArgs;
-namespace Engine.Services
+namespace NABISFRSTRPG.Core
 {
     public class MessageBroker
     {
@@ -16,7 +15,7 @@ namespace Engine.Services
         {
             return s_messageBroker;
         }
-        internal void RaiseMessage(string message)
+        public void RaiseMessage(string message)
         {
             OnMessageRaised?.Invoke(this, new GameMessageEventArgs(message));
         }

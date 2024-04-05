@@ -1,6 +1,7 @@
 ﻿using System;
 using NABISFRSTRPG.Models.EventArgs;
 using Engine.Services;
+using NABISFRSTRPG.Core;
 namespace Engine.Models
 {
     public class Battle : IDisposable

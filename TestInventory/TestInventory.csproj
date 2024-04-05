@@ -18,6 +18,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj" />
+    <ProjectReference Include="..\NABISFRSTRPG.Core\NABISFRSTRPG.Core.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.Models\NABISFRSTRPG.Models.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.Services\NABISFRSTRPG.Services.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.ViewModels\NABISFRSTRPG.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

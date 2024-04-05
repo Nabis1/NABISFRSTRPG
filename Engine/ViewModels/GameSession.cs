@@ -5,6 +5,7 @@ using Engine.Models;
 using Engine.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NABISFRSTRPG.Core;
 namespace Engine.ViewModels
 {
     public class GameSession : INotifyPropertyChanged

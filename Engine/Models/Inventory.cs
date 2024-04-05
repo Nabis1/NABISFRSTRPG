@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Engine.Services;
+using Engine.Shared;
 using Newtonsoft.Json;
 
 namespace Engine.Models
@@ -50,5 +50,6 @@ namespace Engine.Models
                 _backingGroupedInventoryItems.First(gi => gi.Item.ItemTypeID == item.ItemTypeID).Quantity++;
             }
         }
+
     }
 }

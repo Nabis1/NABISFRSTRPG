@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace NABISFRSTRPG.Services
-{
+namespace NABISFRSTRPG.Core 
+{ 
     public static class LoggingService
     {
         private const string LOG_FILE_DIRECTORY = "Logs";

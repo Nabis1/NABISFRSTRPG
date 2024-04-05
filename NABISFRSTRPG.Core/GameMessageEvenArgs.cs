@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NABISFRSTRPG.Models.EventArgs
+namespace NABISFRSTRPG.Core
 {
     public class GameMessageEventArgs : System.EventArgs
     {
