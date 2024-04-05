@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using Engine.Factories;
-using NABISFRSTRPG.Core;
 namespace Engine.Models
 {
     public class Monster : LivingEntity
     {
-        private readonly List<ItemPercentage> _lootTable =
+        public List<ItemPercentage> LootTable =
             new List<ItemPercentage>();
         public int ID { get; }
         public string ImageName { get; }
@@ -25,25 +23,15 @@ namespace Engine.Models
         {
             // Remove the entry from the loot table,
             // if it already contains an entry with this ID
-            _lootTable.RemoveAll(ip => ip.ID == id);
-            _lootTable.Add(new ItemPercentage(id, percentage));
+            LootTable.RemoveAll(ip => ip.ID == id);
+            LootTable.Add(new ItemPercentage(id, percentage));
         }
-        public Monster GetNewInstance()
+        
+        public Monster Clone()
         {
-            // "Clone" this monster to a new Monster object
-            Monster newMonster =
-                new Monster(ID, Name, ImageName, MaximumHitPoints, Attributes,
-                            CurrentWeapon, RewardExperiencePoints, Gold);
-            foreach (ItemPercentage itemPercentage in _lootTable)
-            {
-                // Clone the loot table - even though we probably won't need it
-                newMonster.AddItemToLootTable(itemPercentage.ID, itemPercentage.Percentage);
-                // Populate the new monster's inventory, using the loot table
-                if (DiceService.Instance.Roll(100).Value <= itemPercentage.Percentage)
-                {
-                    newMonster.AddItemToInventory(ItemFactory.CreateGameItem(itemPercentage.ID));
-                }
-            }
+            Monster newMonster = new Monster(ID, Name, ImageName, MaximumHitPoints, Attributes, CurrentWeapon, RewardExperiencePoints, Gold);
+
+            newMonster.LootTable.AddRange(LootTable);
             return newMonster;
         }
     }

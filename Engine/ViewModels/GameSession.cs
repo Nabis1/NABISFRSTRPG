@@ -49,7 +49,7 @@ namespace Engine.ViewModels
                 
                 CompleteQuestsAtLocation();
                 GivePlayerQuestsAtLocation();
-                CurrentMonster = CurrentLocation.GetMonster();
+                CurrentMonster = MonsterFactory.GetMonsterFromLocation(CurrentLocation);
                 CurrentTrader = CurrentLocation.TraderHere;
             }
         }
@@ -254,7 +254,7 @@ namespace Engine.ViewModels
         private void OnCurrentMonsterKilled(object sender, System.EventArgs eventArgs)
         {
             // Get another monster to fight
-            CurrentMonster = CurrentLocation.GetMonster();
+            CurrentMonster = MonsterFactory.GetMonsterFromLocation(CurrentLocation);
         }
         private void OnCurrentPlayerLeveledUp(object sender, System.EventArgs eventArgs)
         {
