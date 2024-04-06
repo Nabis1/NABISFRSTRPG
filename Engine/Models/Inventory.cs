@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Engine.Services;
 using Engine.Shared;
 using Newtonsoft.Json;
 
@@ -49,6 +50,48 @@ namespace Engine.Models
                 }
                 _backingGroupedInventoryItems.First(gi => gi.Item.ItemTypeID == item.ItemTypeID).Quantity++;
             }
+        }
+        public Inventory AddItem( GameItem item)
+        {
+            return AddItems(new List<GameItem> { item });
+        }
+        public Inventory AddItems(IEnumerable<GameItem> items)
+        {
+            return new Inventory(Items.Concat(items));
+        }
+
+
+        public Inventory RemoveItem( GameItem item)
+        {
+            return RemoveItems(new List<GameItem> { item });
+        }
+        public  Inventory RemoveItems( IEnumerable<GameItem> items)
+        {
+            // REFACTOR: Look for a cleaner solution, with fewer temporary variables.
+            List<GameItem> workingInventory = Items.ToList();
+            IEnumerable<GameItem> itemsToRemove = items.ToList();
+            foreach (GameItem item in itemsToRemove)
+            {
+                workingInventory.Remove(item);
+            }
+            return new Inventory(workingInventory);
+        }
+        public Inventory RemoveItems(IEnumerable<ItemQuantity> itemQuantities)
+        {
+            // REFACTOR
+            Inventory workingInventory = new Inventory(Items);
+            foreach (ItemQuantity itemQuantity in itemQuantities)
+            {
+                for (int i = 0; i < itemQuantity.Quantity; i++)
+                {
+                    workingInventory =
+                        workingInventory
+                            .RemoveItem(workingInventory
+                                        .Items
+                                        .First(item => item.ItemTypeID == itemQuantity.ItemID));
+                }
+            }
+            return workingInventory;
         }
 
     }

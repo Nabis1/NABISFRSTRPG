@@ -27,9 +27,7 @@ namespace TestInventory
         public void Test_AddItems()
         {
             Inventory inventory = new Inventory();
-            List<GameItem> itemsToAdd = new List<GameItem>();
-            itemsToAdd.Add(ItemFactory.CreateGameItem(3001));
-            itemsToAdd.Add(ItemFactory.CreateGameItem(3002));
+            List<GameItem> itemsToAdd = [ItemFactory.CreateGameItem(3001), ItemFactory.CreateGameItem(3002)];
             Inventory inventory1 =
                 inventory.AddItems(itemsToAdd);
             Assert.AreEqual(2, inventory1.Items.Count);
