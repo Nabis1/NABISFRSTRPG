@@ -1,8 +1,8 @@
-using Engine.ViewModels;
+using NABISFRSTRPG.ViewModels;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace TestEngine.ViewModels
+namespace TestNABISFRSTRPG.ViewModels
 {
     public class TestGameSession
     {

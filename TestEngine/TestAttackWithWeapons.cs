@@ -1,9 +1,9 @@
 using System;
-using Engine.Actions;
-using Engine.Factories;
-using Engine.Models;
+using NABISFRSTRPG.Models.Actions;
+using NABISFRSTRPG.Services.Factories;
+using NABISFRSTRPG.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace TestEngine.Actions
+namespace TestNABISFRSTRPG.Models.Actions
 {
     [TestClass]
     public class TestAttackWithWeapon

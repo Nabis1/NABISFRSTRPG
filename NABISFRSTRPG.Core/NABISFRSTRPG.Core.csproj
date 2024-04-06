@@ -11,9 +11,4 @@
     <PackageReference Include="D20Tek.DiceNotation.Standard" Version="3.3.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\nabisfrstrpg.Models\NABISFRSTRPG.Models.csproj" />
-    <ProjectReference Include="..\nabisfrstrpg.Services\NABISFRSTRPG.Services.csproj" />
-  </ItemGroup>
-
 </Project>

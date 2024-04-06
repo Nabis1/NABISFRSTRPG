@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using Engine.Models;
-using Engine.ViewModels;
+using NABISFRSTRPG.Models;
+using NABISFRSTRPG.ViewModels;
 namespace WPFUI
 {
     /// <summary>

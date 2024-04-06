@@ -1,7 +1,7 @@
-using Engine.Models;
-using Engine.Services;
+using NABISFRSTRPG.Models;
+using NABISFRSTRPG.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace TestEngine.Services
+namespace TestNABISFRSTRPG.Services
 {
     [TestClass]
     public class TestCombatService

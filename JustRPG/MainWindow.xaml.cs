@@ -6,9 +6,9 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using NABISFRSTRPG.Core;
-using Engine.Models;
-using Engine.Services;
-using Engine.ViewModels;
+using NABISFRSTRPG.Models;
+using NABISFRSTRPG.Services;
+using NABISFRSTRPG.ViewModels;
 using Microsoft.Win32;
 using WPFUI.Windows;
 namespace WPFUI

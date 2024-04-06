@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using Engine.Models;
-using Engine.Services;
-using Engine.Factories;
+using NABISFRSTRPG.Models;
+using NABISFRSTRPG.Services;
+using NABISFRSTRPG.Services.Factories;
 using System.Numerics;
 using System.ComponentModel;
 namespace NABISFRSTRPG.ViewModels

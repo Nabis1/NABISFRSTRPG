@@ -1,7 +1,7 @@
-using Engine.Models;
-using Engine.ViewModels;
+using NABISFRSTRPG.Models;
+using NABISFRSTRPG.ViewModels;
 
-namespace TestEngine.ViewModels
+namespace TestNABISFRSTRPG.ViewModels
 {
     [TestClass]
     public class TestGameSession
