@@ -11,6 +11,7 @@ using NABISFRSTRPG.Services;
 using NABISFRSTRPG.ViewModels;
 using Microsoft.Win32;
 using WPFUI.Windows;
+using System.Collections.Specialized;
 namespace WPFUI
 {
     public partial class MainWindow : Window
@@ -26,7 +27,8 @@ namespace WPFUI
             InitializeUserInputActions();
             SetActiveGameSessionTo(new GameSession(player, xLocation, yLocation));
         }
-        private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
+        
+            private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
         {
             _gameSession.MoveNorth();
         }
@@ -50,11 +52,7 @@ namespace WPFUI
         {
             _gameSession.UseCurrentConsumable();
         }
-        private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
-        {
-            GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
-            GameMessages.ScrollToEnd();
-        }
+       
         private void OnClick_DisplayTradeScreen(object sender, RoutedEventArgs e)
         {
             if (_gameSession.CurrentTrader != null)
@@ -114,6 +112,9 @@ namespace WPFUI
             GameMessages.Document.Blocks.Clear();
             _messageBroker.OnMessageRaised += OnGameMessageRaised;
         }
+
+
+
         private void StartNewGame_OnClick(object sender, RoutedEventArgs e)
         {
             Startup startup = new Startup();

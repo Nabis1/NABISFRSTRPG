@@ -17,10 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="TestFiles\SavedGames\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestFiles\SavedGames\" />
+    <ProjectReference Include="..\nabisfrstrpg.Models\NABISFRSTRPG.Models.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.Services\NABISFRSTRPG.Services.csproj" />
   </ItemGroup>
 
 </Project>

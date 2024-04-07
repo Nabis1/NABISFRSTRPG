@@ -1,4 +1,5 @@
 using NABISFRSTRPG.Models;
+using NABISFRSTRPG.Core;
 using NABISFRSTRPG.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestNABISFRSTRPG.Services
@@ -9,10 +10,10 @@ namespace TestNABISFRSTRPG.Services
         [TestMethod]
         public void Test_FirstAttacker()
         {
-            // Player and monster with dexterity 12
-            //Player player = new Player("", 0, 0, 0, 18, 0);
+            //Player and monster with dexterity 12
+            //Player player = new Player("", 0, 0, 0, 12,0);
             //Monster monster = new Monster(0, "", "", 0, 12, null, 0, 0);
-            //CombatService.Combatant result = CombatService.FirstAttacker(player, monster);
+            //Battle.Combatant result = Battle.FirstAttacker(player, monster);
         }
     }
 }

@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\nabisfrstrpg.Models\NABISFRSTRPG.Models.csproj" />
+    <ProjectReference Include="..\nabisfrstrpg.ViewModels\NABISFRSTRPG.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
