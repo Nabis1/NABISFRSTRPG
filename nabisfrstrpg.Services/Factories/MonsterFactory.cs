@@ -35,7 +35,7 @@ namespace NABISFRSTRPG.Services.Factories
         {
             if (!location.MonstersHere.Any())
             {
-                return null;
+               return null;
             }
             // Total the percentages of all monsters at this location.
             int totalChances = location.MonstersHere.Sum(m => m.ChanceOfEncountering);

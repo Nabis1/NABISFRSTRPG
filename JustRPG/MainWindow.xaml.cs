@@ -52,7 +52,12 @@ namespace WPFUI
         {
             _gameSession.UseCurrentConsumable();
         }
-       
+        private void OnGameMessageRaised(object sender, GameMessageEventArgs e)
+        {
+            GameMessages.Document.Blocks.Add(new Paragraph(new Run(e.Message)));
+            GameMessages.ScrollToEnd();
+        }
+
         private void OnClick_DisplayTradeScreen(object sender, RoutedEventArgs e)
         {
             if (_gameSession.CurrentTrader != null)

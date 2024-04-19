@@ -59,7 +59,7 @@ namespace NABISFRSTRPG.ViewModels
         {
             get => _currentMonster;
             set
-            {
+           {
                 if (_currentBattle != null)
                 {
                     _currentBattle.OnCombatVictory -= OnCurrentMonsterKilled;

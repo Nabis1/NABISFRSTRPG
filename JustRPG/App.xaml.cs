@@ -2,7 +2,7 @@
 using System.Windows.Threading;
 using NABISFRSTRPG.Core;
 
-namespace JustRPG
+namespace WPFUI
 {
     /// <summary>
     /// Interaction logic for App.xaml
